@@ -4,6 +4,10 @@ import java.util.List;
 
 public class Community {
     /**
+     * Уникальный код сообщества
+     */
+    private CommunityId id;
+    /**
      * Администратор сообщества
      */
     private PersonId administrator;
