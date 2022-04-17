@@ -7,7 +7,6 @@ public class Community {
     /**
      * Уникальный код сообщества
      */
-    // FIXME: для этого поля отсутствуют getter/setter
     private CommunityId id;
 
     /**
@@ -38,8 +37,27 @@ public class Community {
     /**
      * Тематика сообщества
      */
-    // FIXME: названия полей должны начинаться со строчной буквы.
-    private String Subject;
+    private String subject;
+    /**
+     * Сколько всего мероприятий на данный момент
+     */
+    private EventsCommunity hmevents;
+
+    public EventsCommunity getHmevents() {
+        return hmevents;
+    }
+
+    public void setHmevents(EventsCommunity hmevents) {
+        this.hmevents = hmevents;
+    }
+
+    public CommunityId getId() {
+        return id;
+    }
+
+    public void setId(CommunityId id) {
+        this.id = id;
+    }
 
     public String getDescription() {
         return description;
@@ -58,11 +76,11 @@ public class Community {
     }
 
     public String getSubject() {
-        return Subject;
+        return subject;
     }
 
     public void setSubject(String subject) {
-        Subject = subject;
+        subject = subject;
     }
 
     public PersonId getAdministrator() {
