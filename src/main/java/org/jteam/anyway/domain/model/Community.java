@@ -1,14 +1,16 @@
 package org.jteam.anyway.domain.model;
 
+import java.util.List;
+
 public class Community {
     /**
      * Администратор сообщества
      */
-    private PersonId Administrator;
+    private PersonId administrator;
     /**
      * Участники сообщества
      */
-    private PersonId Members;
+    private List<PersonId> members;
     /**
      * Фото сообщества
      */
@@ -43,19 +45,19 @@ public class Community {
     }
 
     public PersonId getAdministrator() {
-        return Administrator;
+        return administrator;
     }
 
     public void setAdministrator(PersonId administrator) {
-        Administrator = administrator;
+        this.administrator = administrator;
     }
 
-    public PersonId getMembers() {
-        return Members;
+    public List<PersonId> getMembers() {
+        return members;
     }
 
-    public void setMembers(PersonId members) {
-        Members = members;
+    public void setMembers(List<PersonId> members) {
+        this.members = members;
     }
 
     public byte[] getPhoto() {
