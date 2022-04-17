@@ -1,5 +1,6 @@
 package org.jteam.anyway.domain.model;
 
+import javax.print.DocFlavor;
 import java.time.LocalDate;
 /**
  * личные данные
@@ -10,29 +11,50 @@ public class Person {
      */
     private PersonId id;
     /**
-     * имя
+     * Имя
      */
     private String firstName;
     /**
-     * день рождение
+     * День рождение
      */
     private LocalDate birthday;
     /**
-     * родной город
+     * Родной город
      */
     private String hometown;
     /**
-     * страна
+     * Страна
      */
     private String country;
     /**
-     * фотография профиля
+     * Фотография профиля
      */
     private byte[] photo;
     /**
-     * фамилия
+     * Фамилия
      */
     private String lastname;
+    /**
+     * Место работы
+     */
+    private String placeofwork;
+    /**
+     * Языки
+     */
+    private String languages;
+    /**
+     * Моб. телефон
+     */
+    private String mobilephone;
+    /**
+     * Образование
+     */
+    private String education;
+    /**
+     * Группы
+     */
+    private String groups;
+
 
     public String getName() {
         return lastname;
@@ -88,5 +110,53 @@ public class Person {
 
     public void setId(PersonId id) {
         this.id = id;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public String getPlaceofwork() {
+        return placeofwork;
+    }
+
+    public void setPlaceofwork(String placeofwork) {
+        this.placeofwork = placeofwork;
+    }
+
+    public String getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(String languages) {
+        this.languages = languages;
+    }
+
+    public String getMobilephone() {
+        return mobilephone;
+    }
+
+    public void setMobilephone(String mobilephone) {
+        this.mobilephone = mobilephone;
+    }
+
+    public String getEducation() {
+        return education;
+    }
+
+    public void setEducation(String education) {
+        this.education = education;
+    }
+
+    public String getGroups() {
+        return groups;
+    }
+
+    public void setGroups(String groups) {
+        this.groups = groups;
     }
 }
