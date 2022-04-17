@@ -4,7 +4,7 @@ public class Community {
     /**
      * Администратор сообщества
      */
-    private PersonId Administrator;
+    private PersonId administrator;
     /**
      * Участники сообщества
      */
@@ -43,11 +43,11 @@ public class Community {
     }
 
     public PersonId getAdministrator() {
-        return Administrator;
+        return administrator;
     }
 
     public void setAdministrator(PersonId administrator) {
-        Administrator = administrator;
+        this.administrator = administrator;
     }
 
     public PersonId getMembers() {
