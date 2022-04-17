@@ -33,14 +33,17 @@ public class Person {
     /**
      * Фамилия
      */
+    //FIXME: каждое слово, кроме первого, должно быть с заглавной буквы, т.е. правильно lastName
     private String lastname;
     /**
      * Место работы
      */
+    //FIXME: каждое слово, кроме первого, должно быть с заглавной буквы, т.е. правильно placeOfWork
     private String placeofwork;
     /**
      * Языки
      */
+    //FIXME: если языков может быть много, то это коллекция, то есть как минимум тип поля должен быть List<String>, вместо String
     private String languages;
     /**
      * Моб. телефон
@@ -53,6 +56,7 @@ public class Person {
     /**
      * Группы
      */
+    //FIXME: полагаю, что речь о сообществах, а значит тип поля тут не строка, а список идентификаторов сообществ, то есть тип будет List<CommunityId>
     private String groups;
 
 
