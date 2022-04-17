@@ -28,6 +28,10 @@ public class Community {
      */
     private String Subject;
 
+    public String getDescription() {
+        return description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
