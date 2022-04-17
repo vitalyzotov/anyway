@@ -18,29 +18,33 @@ public class Community {
     /**
      * Описание сообщества
      */
-    private CommunityId description;
+    private String description;
     /**
      * Название сообщества
      */
-    private CommunityId title;
+    private String title;
     /**
      * Тематика сообщества
      */
-    private CommunityId Subject;
+    private String Subject;
 
-    public CommunityId getTitle() {
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getTitle() {
         return title;
     }
 
-    public void setTitle(CommunityId title) {
+    public void setTitle(String title) {
         this.title = title;
     }
 
-    public CommunityId getSubject() {
+    public String getSubject() {
         return Subject;
     }
 
-    public void setSubject(CommunityId subject) {
+    public void setSubject(String subject) {
         Subject = subject;
     }
 
@@ -66,13 +70,5 @@ public class Community {
 
     public void setPhoto(byte[] photo) {
         this.photo = photo;
-    }
-
-    public CommunityId getDescription() {
-        return description;
-    }
-
-    public void setDescription(CommunityId description) {
-        this.description = description;
     }
 }
