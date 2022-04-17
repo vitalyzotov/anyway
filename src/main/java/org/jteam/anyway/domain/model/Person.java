@@ -2,10 +2,25 @@ package org.jteam.anyway.domain.model;
 
 import javax.print.DocFlavor;
 import java.time.LocalDate;
+import java.util.List;
+
 /**
  * личные данные
  */
 public class Person {
+    /**
+     * Список событий
+     */
+    private List<EventsCommunity> eventslist;
+
+    public List<EventsCommunity> getEventslist() {
+        return eventslist;
+    }
+
+    public void setEventslist(List<EventsCommunity> eventslist) {
+        this.eventslist = eventslist;
+    }
+
     /**
      * id
      */

@@ -41,13 +41,13 @@ public class Community {
     /**
      * Сколько всего мероприятий на данный момент
      */
-    private EventsCommunity hmevents;
+    private List<EventsCommunity> hmevents;
 
-    public EventsCommunity getHmevents() {
+    public List<EventsCommunity> getHmevents() {
         return hmevents;
     }
 
-    public void setHmevents(EventsCommunity hmevents) {
+    public void setHmevents(List<EventsCommunity> hmevents) {
         this.hmevents = hmevents;
     }
 

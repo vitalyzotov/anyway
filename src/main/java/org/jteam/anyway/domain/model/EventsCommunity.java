@@ -1,6 +1,7 @@
 package org.jteam.anyway.domain.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class EventsCommunity {
     /**
@@ -10,7 +11,7 @@ public class EventsCommunity {
     /**
      * Учавствующие в мероприятии
      */
-    private PersonId membersmetingtime;
+    private List<PersonId> membersmetingtime;
     /**
      * Название мероприятия
      */
@@ -23,13 +24,21 @@ public class EventsCommunity {
      * Сколько всего мероприятий на данный момент
      * Такое же поле есть в Community
      */
-    private String hmevents;
+    private List<String> hmevents;
 
-    public String getHmevents() {
+    public List<PersonId> getMembersmetingtime() {
+        return membersmetingtime;
+    }
+
+    public void setMembersmetingtime(List<PersonId> membersmetingtime) {
+        this.membersmetingtime = membersmetingtime;
+    }
+
+    public List<String> getHmevents() {
         return hmevents;
     }
 
-    public void setHmevents(String hmevents) {
+    public void setHmevents(List<String> hmevents) {
         this.hmevents = hmevents;
     }
 
@@ -41,13 +50,6 @@ public class EventsCommunity {
         this.meetingtime = meetingtime;
     }
 
-    public PersonId getMembersmetingtime() {
-        return membersmetingtime;
-    }
-
-    public void setMembersmetingtime(PersonId membersmetingtime) {
-        this.membersmetingtime = membersmetingtime;
-    }
 
     public String getTitle() {
         return title;
