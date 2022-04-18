@@ -48,18 +48,15 @@ public class Person {
     /**
      * Фамилия
      */
-    //FIXME: каждое слово, кроме первого, должно быть с заглавной буквы, т.е. правильно lastName
-    private String lastname;
+    private String lastName;
     /**
      * Место работы
      */
-    //FIXME: каждое слово, кроме первого, должно быть с заглавной буквы, т.е. правильно placeOfWork
-    private String placeofwork;
+    private String placeOfWork;
     /**
      * Языки
      */
-    //FIXME: если языков может быть много, то это коллекция, то есть как минимум тип поля должен быть List<String>, вместо String
-    private String languages;
+    private List<String> languages;
     /**
      * Моб. телефон
      */
@@ -71,17 +68,11 @@ public class Person {
     /**
      * Группы
      */
-    //FIXME: полагаю, что речь о сообществах, а значит тип поля тут не строка, а список идентификаторов сообществ, то есть тип будет List<CommunityId>
-    private String groups;
+    private List<CommunityId> groups;
 
 
-    public String getName() {
-        return lastname;
-    }
 
-    public void setName(String name) {
-        this.lastname = name;
-    }
+
 
     public String getHometown() {
         return hometown;
@@ -131,30 +122,6 @@ public class Person {
         this.id = id;
     }
 
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getPlaceofwork() {
-        return placeofwork;
-    }
-
-    public void setPlaceofwork(String placeofwork) {
-        this.placeofwork = placeofwork;
-    }
-
-    public String getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(String languages) {
-        this.languages = languages;
-    }
-
     public String getMobilephone() {
         return mobilephone;
     }
@@ -167,15 +134,39 @@ public class Person {
         return education;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPlaceOfWork() {
+        return placeOfWork;
+    }
+
+    public void setPlaceOfWork(String placeOfWork) {
+        this.placeOfWork = placeOfWork;
+    }
+
+    public List<String> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<String> languages) {
+        this.languages = languages;
+    }
+
     public void setEducation(String education) {
         this.education = education;
     }
 
-    public String getGroups() {
+    public List<CommunityId> getGroups() {
         return groups;
     }
 
-    public void setGroups(String groups) {
+    public void setGroups(List<CommunityId> groups) {
         this.groups = groups;
     }
 }
