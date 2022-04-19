@@ -38,9 +38,11 @@ public class Community {
      * Тематика сообщества
      */
     private String subject;
+
     /**
-     * Сколько всего мероприятий на данный момент
+     * Список мероприятий сообщества
      */
+    // TODO: переименовать в events
     private List<EventsCommunity> hmevents;
 
     public List<EventsCommunity> getHmevents() {

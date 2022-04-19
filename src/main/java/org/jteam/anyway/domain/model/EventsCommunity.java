@@ -3,27 +3,38 @@ package org.jteam.anyway.domain.model;
 import java.time.LocalDate;
 import java.util.List;
 
+// TODO: класс представляет собой ОДНО мероприятие, поэтому должен называться в единственном числе - Event
+// TODO: если уж хочется делать упор на то, что это мероприятие СООБЩЕСТВА, то тогда назвать CommunityEvent
 public class EventsCommunity {
+
     /**
-     * Дата встречи
+     * Дата и время встречи
      */
+    // TODO: каждое слово с заглавной буквы. Поэтому переименовать в meetingTime.
+    // TODO: так как нужно хранить не только дату, но и время, то использовать тип LocalDateTime
     private LocalDate meetingtime;
+
     /**
-     * Учавствующие в мероприятии
+     * Участники мероприятия
      */
+    // TODO: переименовать просто в members
     private List<PersonId> membersmetingtime;
+
     /**
      * Название мероприятия
      */
     private String title;
+
     /**
      * Описание мероприятия
      */
     private String description;
+
     /**
      * Сколько всего мероприятий на данный момент
      * Такое же поле есть в Community
      */
+    // TODO: не имеет смысла. удалить поле.
     private List<String> hmevents;
 
     public List<PersonId> getMembersmetingtime() {

@@ -11,6 +11,7 @@ public class Person {
     /**
      * Список событий
      */
+    // TODO: eventslist - он и так List, не стоит добавлять слово List еще и в название. Предлагаю просто events.
     private List<EventsCommunity> eventslist;
 
     public List<EventsCommunity> getEventslist() {
@@ -22,57 +23,64 @@ public class Person {
     }
 
     /**
-     * id
+     * Идентификатор
      */
     private PersonId id;
+
     /**
      * Имя
      */
     private String firstName;
+
     /**
-     * День рождение
+     * Дата рождения
      */
     private LocalDate birthday;
+
     /**
      * Родной город
      */
     private String hometown;
+
     /**
      * Страна
      */
     private String country;
+
     /**
      * Фотография профиля
      */
     private byte[] photo;
+
     /**
      * Фамилия
      */
     private String lastName;
+
     /**
      * Место работы
      */
     private String placeOfWork;
+
     /**
      * Языки
      */
     private List<String> languages;
+
     /**
      * Моб. телефон
      */
     private String mobilephone;
+
     /**
      * Образование
      */
     private String education;
+
     /**
      * Группы
      */
     private List<CommunityId> groups;
-
-
-
-
 
     public String getHometown() {
         return hometown;
