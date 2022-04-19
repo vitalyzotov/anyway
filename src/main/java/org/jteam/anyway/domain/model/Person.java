@@ -8,19 +8,11 @@ import java.util.List;
  * личные данные
  */
 public class Person {
+
     /**
      * Список событий
      */
-    // TODO: eventslist - он и так List, не стоит добавлять слово List еще и в название. Предлагаю просто events.
-    private List<EventsCommunity> eventslist;
-
-    public List<EventsCommunity> getEventslist() {
-        return eventslist;
-    }
-
-    public void setEventslist(List<EventsCommunity> eventslist) {
-        this.eventslist = eventslist;
-    }
+    private List<EventsCommunity> events;
 
     /**
      * Идентификатор
@@ -176,5 +168,13 @@ public class Person {
 
     public void setGroups(List<CommunityId> groups) {
         this.groups = groups;
+    }
+
+    public List<EventsCommunity> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<EventsCommunity> events) {
+        this.events = events;
     }
 }
