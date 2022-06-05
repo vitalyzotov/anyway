@@ -3,12 +3,33 @@ package org.jteam.anyway.domain.model;
 public class Messenger {
 
     private String userName;
+    /**
+     *
+     */
     private static String userId;
+    /**
+     *
+     */
     private String messageType;
+    /**
+     *
+     */
     private static String messageId;
+    /**
+     *
+     */
     private String createdTime;
+    /**
+     *
+     */
     private String recipientName;
+    /**
+     *
+     */
     private static String recipientId;
+    /**
+     *
+     */
 
     public String getUserName() {
         return userName;
