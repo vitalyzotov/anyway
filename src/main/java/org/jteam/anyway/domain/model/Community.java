@@ -42,15 +42,14 @@ public class Community {
     /**
      * Список мероприятий сообщества
      */
-    // TODO: переименовать в events
-    private List<EventsCommunity> hmevents;
+    private List<EventCommunity> events;
 
-    public List<EventsCommunity> getHmevents() {
-        return hmevents;
+    public List<EventCommunity> getEvents() {
+        return events;
     }
 
-    public void setHmevents(List<EventsCommunity> hmevents) {
-        this.hmevents = hmevents;
+    public void setEvents(List<EventCommunity> events) {
+        this.events = events;
     }
 
     public CommunityId getId() {

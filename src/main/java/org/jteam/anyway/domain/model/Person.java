@@ -1,6 +1,5 @@
 package org.jteam.anyway.domain.model;
 
-import javax.print.DocFlavor;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -11,15 +10,14 @@ public class Person {
     /**
      * Список событий
      */
-    // TODO: eventslist - он и так List, не стоит добавлять слово List еще и в название. Предлагаю просто events.
-    private List<EventsCommunity> eventslist;
+    private List<EventCommunity> events;
 
-    public List<EventsCommunity> getEventslist() {
-        return eventslist;
+    public List<EventCommunity> getEvents() {
+        return events;
     }
 
-    public void setEventslist(List<EventsCommunity> eventslist) {
-        this.eventslist = eventslist;
+    public void setEvents(List<EventCommunity> events) {
+        this.events = events;
     }
 
     /**
