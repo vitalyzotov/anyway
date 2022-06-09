@@ -1,6 +1,5 @@
 package org.jteam.anyway.domain.model;
 
-import javax.print.DocFlavor;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -8,20 +7,6 @@ import java.util.List;
  * личные данные
  */
 public class Person {
-    /**
-     * Список событий
-     */
-    // TODO: eventslist - он и так List, не стоит добавлять слово List еще и в название. Предлагаю просто events.
-    private List<EventCommunity> eventslist;
-
-    public List<EventCommunity> getEventslist() {
-        return eventslist;
-    }
-
-    public void setEventslist(List<EventCommunity> eventslist) {
-        this.eventslist = eventslist;
-    }
-
     /**
      * Идентификатор
      */
@@ -81,6 +66,7 @@ public class Person {
      * Группы
      */
     private List<CommunityId> groups;
+
 
     public String getHometown() {
         return hometown;
@@ -177,4 +163,5 @@ public class Person {
     public void setGroups(List<CommunityId> groups) {
         this.groups = groups;
     }
+
 }
