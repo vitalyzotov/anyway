@@ -8,5 +8,25 @@
         <sqlFile path="start.sql" relativeToChangelogFile="true" encoding="UTF-8"/>
     </changeSet>
 
+    <changeSet id="001" author="vzotov">
+        <createTable tableName="community_members_">
+            <column name="COMMUNITY_UID" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PERSON_UID" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="community_members_" baseColumnNames="COMMUNITY_UID"
+                                 constraintName="FK_C_MEMBERS_COMMUNITY"
+                                 referencedTableName="community_"
+                                 referencedColumnNames="COMMUNITY_UID" onDelete="CASCADE" onUpdate="CASCADE"/>
+        <addForeignKeyConstraint baseTableName="community_members_" baseColumnNames="PERSON_UID"
+                                 constraintName="FK_C_MEMBERS_PERSON"
+                                 referencedTableName="person_"
+                                 referencedColumnNames="PERSON_UID" onDelete="CASCADE" onUpdate="CASCADE"/>
+        <addUniqueConstraint tableName="community_members_" columnNames="COMMUNITY_UID,PERSON_UID"/>
+    </changeSet>
 
 </databaseChangeLog>

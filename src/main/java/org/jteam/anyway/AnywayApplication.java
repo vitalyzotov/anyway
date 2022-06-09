@@ -3,7 +3,7 @@ package org.jteam.anyway;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = { "org.jteam.anyway" })
 public class AnywayApplication {
 
     public static void main(String[] args) {

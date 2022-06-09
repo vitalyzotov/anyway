@@ -2,6 +2,7 @@ package org.jteam.anyway.domain.model;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * личные данные
@@ -55,18 +56,44 @@ public class Person {
     /**
      * Моб. телефон
      */
-    private String mobilephone;
+    private String mobilePhone;
 
     /**
      * Образование
      */
     private String education;
 
-    /**
-     * Группы
-     */
-    private List<CommunityId> groups;
+    public Person(PersonId id) {
+        Objects.requireNonNull(id, "Person ID is required");
+        this.id = id;
+    }
 
+    public Person(PersonId id,
+                  String firstName,
+                  String lastName,
+                  LocalDate birthday,
+                  String country,
+                  String hometown,
+                  String mobilePhone,
+                  String education,
+                  String placeOfWork,
+                  List<String> languages,
+                  byte[] photo
+    ) {
+        this(id);
+        Objects.requireNonNull(firstName, "First name is required");
+        Objects.requireNonNull(lastName, "Last name is required");
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthday = birthday;
+        this.hometown = hometown;
+        this.country = country;
+        this.photo = photo;
+        this.placeOfWork = placeOfWork;
+        this.languages = languages;
+        this.mobilePhone = mobilePhone;
+        this.education = education;
+    }
 
     public String getHometown() {
         return hometown;
@@ -116,12 +143,12 @@ public class Person {
         this.id = id;
     }
 
-    public String getMobilephone() {
-        return mobilephone;
+    public String getMobilePhone() {
+        return mobilePhone;
     }
 
-    public void setMobilephone(String mobilephone) {
-        this.mobilephone = mobilephone;
+    public void setMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
     }
 
     public String getEducation() {
@@ -154,14 +181,6 @@ public class Person {
 
     public void setEducation(String education) {
         this.education = education;
-    }
-
-    public List<CommunityId> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<CommunityId> groups) {
-        this.groups = groups;
     }
 
 }

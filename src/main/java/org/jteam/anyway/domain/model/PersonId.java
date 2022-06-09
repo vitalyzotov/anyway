@@ -1,6 +1,7 @@
 package org.jteam.anyway.domain.model;
 
 import java.util.Objects;
+import java.util.UUID;
 
 public class PersonId {
     private final String value;
@@ -12,7 +13,9 @@ public class PersonId {
     public PersonId(String value) {
         Objects.requireNonNull(value);
         this.value = value;
-
     }
 
+    public static PersonId nextId() {
+        return new PersonId(UUID.randomUUID().toString());
+    }
 }
