@@ -1,6 +1,9 @@
 package org.jteam.anyway.domain.model;
 
 import java.time.Instant;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Objects;
 
 public class Message {
 
@@ -39,6 +42,29 @@ public class Message {
      */
     private byte[] data;
 
+    public Message(MessageId id) {
+        Objects.requireNonNull(id, "MessageId is required");
+        this.messageId = id;
+    }
+
+    public Message(MessageId id,
+                   MessageId messageId,
+                   PersonId authorId,
+                   MessageType messageType,
+                   Instant created,
+                   PersonId recipientId,
+                   String text,
+                   byte[] data
+                   ){
+        this(id);
+        this.messageId = messageId;
+        this.authorId = authorId;
+        this.messageType = messageType;
+        this.created = created;
+        this.recipientId = recipientId;
+        this.text = text;
+        this.data = data;
+    }
 
     public MessageId getMessageId() {
         return messageId;
