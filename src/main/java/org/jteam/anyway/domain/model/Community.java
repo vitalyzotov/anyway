@@ -1,6 +1,7 @@
 package org.jteam.anyway.domain.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Community {
 
@@ -43,6 +44,35 @@ public class Community {
      * Список мероприятий сообщества
      */
     private List<EventCommunity> events;
+
+    public Community(CommunityId id) {
+        Objects.requireNonNull(id, "Community ID is required");
+        this.id = id;
+    }
+
+    public Community(
+            CommunityId id,
+            String description,
+            String title,
+            String subject,
+            PersonId administrator,
+            List<PersonId> members,
+            List<EventCommunity> events,
+            byte[] photo
+    ) {
+
+
+        this(id);
+        Objects.requireNonNull(administrator, "Administrator is required");
+        Objects.requireNonNull(photo, "Photo is requitred");
+        this.administrator = administrator;
+        this.members = members;
+        this.photo = photo;
+        this.description = description;
+        this.title = title;
+        this.subject = subject;
+        this.events = events;
+    }
 
     public List<EventCommunity> getEvents() {
         return events;

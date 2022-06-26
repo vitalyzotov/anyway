@@ -3,6 +3,7 @@ package org.jteam.anyway.domain.model;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 
 public class EventCommunity {
@@ -11,6 +12,7 @@ public class EventCommunity {
      * Дата и время встречи
      */
     private LocalDateTime meetingTime;
+
 
     /**
      * Участники мероприятия
@@ -33,6 +35,23 @@ public class EventCommunity {
      * Такое же поле есть в Community
      */
     private List<String> hmevents;
+
+    public EventCommunity(
+            LocalDateTime meetingTime,
+            List<PersonId> members,
+            String title,
+            String description,
+            List<String> hmevents
+    ){
+
+        Objects.requireNonNull(title,"title is required");
+        Objects.requireNonNull(description, "description is required");
+        this.meetingTime = meetingTime;
+        this.members = members;
+        this.title = title;
+        this.description = description;
+        this.hmevents = hmevents;
+    }
 
     public List<PersonId> getMembers() {
         return members;
