@@ -5,7 +5,7 @@ import java.util.Objects;
 public class CommunityId {
     private final String value;
 
-    public String getValue() {
+    public String asString() {
         return value;
     }
 

@@ -48,7 +48,6 @@ public class Message {
     }
 
     public Message(MessageId id,
-                   MessageId messageId,
                    PersonId authorId,
                    MessageType messageType,
                    Instant created,
@@ -57,7 +56,6 @@ public class Message {
                    byte[] data
                    ){
         this(id);
-        this.messageId = messageId;
         this.authorId = authorId;
         this.messageType = messageType;
         this.created = created;

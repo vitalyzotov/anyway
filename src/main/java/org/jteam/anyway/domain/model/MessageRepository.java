@@ -4,8 +4,8 @@ package org.jteam.anyway.domain.model;
 import java.util.Optional;
 
 public interface MessageRepository {
-    Optional<String> find(MessageId MessageId);
+    Optional<Message> find(MessageId messageId);
 
-    void store(String String);
+    void store(Message message);
 }
 
