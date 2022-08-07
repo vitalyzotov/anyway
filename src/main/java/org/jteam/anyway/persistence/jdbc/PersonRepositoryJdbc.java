@@ -6,11 +6,13 @@ import org.jteam.anyway.domain.model.PersonRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Types;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -39,40 +41,48 @@ public class PersonRepositoryJdbc implements PersonRepository {
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
+    private RowMapper<Person> personRowMapper = (rs, rowNum) ->
+            new Person(
+                    new PersonId(rs.getString("PERSON_UID")),
+                    rs.getString("FIRST_NAME"),
+                    rs.getString("LAST_NAME"),
+                    rs.getDate("BIRTH_DATE").toLocalDate(),
+                    rs.getString("COUNTRY"),
+                    rs.getString("CITY"),
+                    rs.getString("PHONE_MOBILE"),
+                    rs.getString("EDUCATION"),
+                    rs.getString("PLACE_OF_WORK"),
+                    Optional.ofNullable(rs.getString("LANGUAGES"))
+                            .stream()
+                            .<String>mapMulti(
+                                    (languages, accept) -> Stream.of(languages.split(","))
+                                            .map(String::trim)
+                                            .forEachOrdered(accept)
+                            )
+                            .toList(),
+                    null
+
+            );
+
     public PersonRepositoryJdbc(NamedParameterJdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
 
     @Override
+    public List<Person> find(String name) {
+        return jdbcTemplate.query("SELECT * FROM person_ WHERE FIRST_NAME like :name OR LAST_NAME like :name",
+                new MapSqlParameterSource().addValue("name", "%"+name+"%"), personRowMapper);
+    }
+
+    @Override
     public Optional<Person> find(PersonId personId) {
         try {
-            return jdbcTemplate.queryForObject(
+            return Optional.ofNullable(jdbcTemplate.queryForObject(
                     SELECT_BY_ID,
                     new MapSqlParameterSource()
                             .addValue("id", personId.getValue(), Types.VARCHAR),
-                    (rs, rowNum) -> Optional.of(
-                            new Person(
-                                    new PersonId(rs.getString("PERSON_UID")),
-                                    rs.getString("FIRST_NAME"),
-                                    rs.getString("LAST_NAME"),
-                                    rs.getDate("BIRTH_DATE").toLocalDate(),
-                                    rs.getString("COUNTRY"),
-                                    rs.getString("CITY"),
-                                    rs.getString("PHONE_MOBILE"),
-                                    rs.getString("EDUCATION"),
-                                    rs.getString("PLACE_OF_WORK"),
-                                    Optional.ofNullable(rs.getString("LANGUAGES"))
-                                            .stream()
-                                            .<String>mapMulti(
-                                                    (languages, accept) -> Stream.of(languages.split(","))
-                                                            .map(String::trim)
-                                                            .forEachOrdered(accept)
-                                            )
-                                            .toList(),
-                                    null
-                            )
-                    )
-            );
+                    personRowMapper
+            ));
         } catch (EmptyResultDataAccessException e) {
             log.debug("Person {} not found", personId, e);
             return Optional.empty();
@@ -96,5 +106,13 @@ public class PersonRepositoryJdbc implements PersonRepository {
                         .addValue("languages", String.join(",", person.getLanguages()), Types.VARCHAR)
         );
         //TODO: добавить сохранение фотографии
+    }
+
+    @Override
+    public int delete(PersonId personId) {
+        return jdbcTemplate.update(
+                "DELETE FROM person_ WHERE PERSON_UID=:id",
+                new MapSqlParameterSource().addValue("id", personId.getValue())
+        );
     }
 }

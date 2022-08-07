@@ -1,8 +1,6 @@
 package org.jteam.anyway.domain.model;
 
 import java.time.Instant;
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 
 public class Message {
@@ -54,7 +52,7 @@ public class Message {
                    PersonId recipientId,
                    String text,
                    byte[] data
-                   ){
+    ) {
         this(id);
         this.authorId = authorId;
         this.messageType = messageType;
