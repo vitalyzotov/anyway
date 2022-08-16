@@ -37,4 +37,10 @@ public class PersonReference {
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
+    public void setTitle(String title) {
+    }
+
+    public void setDescription(String description) {
+    }
 }

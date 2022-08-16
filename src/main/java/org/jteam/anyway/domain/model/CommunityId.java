@@ -13,4 +13,5 @@ public class CommunityId {
         Objects.requireNonNull(value);
         this.value = value;
     }
+
 }

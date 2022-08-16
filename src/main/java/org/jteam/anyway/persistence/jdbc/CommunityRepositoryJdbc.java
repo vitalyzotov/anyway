@@ -1,9 +1,7 @@
+
 package org.jteam.anyway.persistence.jdbc;
 
-import org.jteam.anyway.domain.model.Community;
-import org.jteam.anyway.domain.model.CommunityId;
-import org.jteam.anyway.domain.model.CommunityRepository;
-import org.jteam.anyway.domain.model.PersonId;
+import org.jteam.anyway.domain.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -25,9 +24,6 @@ public class CommunityRepositoryJdbc implements CommunityRepository {
     public CommunityRepositoryJdbc(NamedParameterJdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
-    public static final String SELECT_BY_ID = """
-            SELECT * FROM community_ as c left join community_photo as cp on c.COMMUNITY_UID=cp.COMMUNITY_UID WHERE COMMUNITY_UID=:id""";
 
     public static final String INSERT_OR_UPDATE = """
                 INSERT INTO community_ (COMMUNITY_UID, ADMIN_UID, DESCRIPTION, TITLE, SUBJECT)
@@ -43,7 +39,7 @@ public class CommunityRepositoryJdbc implements CommunityRepository {
     public Optional<Community> find(CommunityId communityId) {
         try {
             return jdbcTemplate.queryForObject(
-                    SELECT_BY_ID,
+                    "SELECT * FROM community_ as c left join community_photo as cp on c.COMMUNITY_UID=cp.COMMUNITY_UID WHERE COMMUNITY_UID=:id",
                     new MapSqlParameterSource().addValue("id", communityId.asString()),
                     new RowMapper<Optional<Community>>() {
                         @Override
@@ -64,6 +60,40 @@ public class CommunityRepositoryJdbc implements CommunityRepository {
         } catch (Exception e) {
             return Optional.empty();
         }
+    }
+
+    @Override
+    public List<Community> find(String title) {
+        String sql = "SELECT * FROM community_ WHERE title like :title";
+
+        MapSqlParameterSource parameters;
+        parameters = new MapSqlParameterSource();
+        parameters.addValue("title", "%" + title + "%");
+
+        RowMapper<Community> rowMapper = new RowMapper<Community>() {
+            @Override
+            public Community mapRow(ResultSet rs, int rowNum) throws SQLException {
+                String communityIdValue = rs.getString("COMMUNITY_UID");
+
+                CommunityId id = new CommunityId(communityIdValue);
+                String description = rs.getString("DESCRIPTION");
+                String communityTitle = rs.getString("TITLE");
+                String subject = rs.getString("SUBJECT") ;
+
+                String personIdValue = rs.getString("ADMIN_UID");
+
+                PersonId administrator = new PersonId(personIdValue);
+                List<PersonId> members = new ArrayList<>();
+                List<EventCommunity> events = new ArrayList<>();
+                byte[] photo = null;
+
+                Community result = new Community(id, description, communityTitle, subject, administrator, members, events, photo);
+
+                return result;
+            }
+        };
+
+        return jdbcTemplate.query(sql, parameters, rowMapper);
     }
 
     @Override

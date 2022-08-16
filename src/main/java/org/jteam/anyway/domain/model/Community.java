@@ -64,7 +64,6 @@ public class Community {
 
         this(id);
         Objects.requireNonNull(administrator, "Administrator is required");
-        Objects.requireNonNull(photo, "Photo is requitred");
         this.administrator = administrator;
         this.members = members;
         this.photo = photo;
