@@ -9,7 +9,9 @@ public interface CommunityRepository {
     public List<Community> find(String title);
 
 
-    void store(Community community);
+    default void store(Community community) {
 
+    }
 
+    int delete(CommunityId communityId);
 }

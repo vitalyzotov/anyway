@@ -39,7 +39,7 @@ public class CommunityRepositoryJdbc implements CommunityRepository {
     public Optional<Community> find(CommunityId communityId) {
         try {
             return jdbcTemplate.queryForObject(
-                    "SELECT * FROM community_ as c left join community_photo as cp on c.COMMUNITY_UID=cp.COMMUNITY_UID WHERE COMMUNITY_UID=:id",
+                    "SELECT * FROM community_ as c left join community_photo_ as cp on c.COMMUNITY_UID=cp.COMMUNITY_UID WHERE c.COMMUNITY_UID=:id",
                     new MapSqlParameterSource().addValue("id", communityId.asString()),
                     new RowMapper<Optional<Community>>() {
                         @Override
@@ -53,11 +53,14 @@ public class CommunityRepositoryJdbc implements CommunityRepository {
                                     new ArrayList<>(),
                                     new ArrayList<>(),
                                     rs.getBytes("PHOTO_")
+
+
                             ));
                         }
                     }
             );
         } catch (Exception e) {
+            log.error("error", e);
             return Optional.empty();
         }
     }
@@ -78,7 +81,7 @@ public class CommunityRepositoryJdbc implements CommunityRepository {
                 CommunityId id = new CommunityId(communityIdValue);
                 String description = rs.getString("DESCRIPTION");
                 String communityTitle = rs.getString("TITLE");
-                String subject = rs.getString("SUBJECT") ;
+                String subject = rs.getString("SUBJECT");
 
                 String personIdValue = rs.getString("ADMIN_UID");
 
@@ -117,5 +120,12 @@ public class CommunityRepositoryJdbc implements CommunityRepository {
                             .addValue("communityId", community.getId().asString())
             );
         }
+    }
+
+    public int delete(CommunityId communityId) {
+        return jdbcTemplate.update(
+                "DELETE FROM person_ WHERE PERSON_UID=:id",
+                new MapSqlParameterSource().addValue("id", communityId.asString())
+        );
     }
 }
