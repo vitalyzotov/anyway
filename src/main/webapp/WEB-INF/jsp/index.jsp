@@ -11,6 +11,7 @@
 <body>
 <h1>Hello, world 3!</h1>
 <a href="/signup">Зарегистрироваться</a>
+<a href="/logout">Выход</a>
 
 <script src="/webjars/bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>
 </body>

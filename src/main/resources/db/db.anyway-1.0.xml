@@ -29,4 +29,61 @@
         <addUniqueConstraint tableName="community_members_" columnNames="COMMUNITY_UID,PERSON_UID"/>
     </changeSet>
 
+    <changeSet id="002" author="vzotov">
+        <addColumn tableName="person_">
+            <column name="PASSWORD" type="VARCHAR(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ENABLED" type="TINYINT" defaultValueNumeric="1">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="003" author="vzotov">
+        <createTable tableName="authorities">
+            <column name="PERSON_UID" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AUTHORITY" type="VARCHAR(64)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="authorities" baseColumnNames="PERSON_UID"
+                                 constraintName="FK_AUTHORITIES_PERSON"
+                                 referencedTableName="person_"
+                                 referencedColumnNames="PERSON_UID" onDelete="CASCADE" onUpdate="CASCADE"/>
+        <addUniqueConstraint tableName="authorities" columnNames="PERSON_UID,AUTHORITY"/>
+    </changeSet>
+
+    <changeSet id="004" author="vzotov">
+        <insert tableName="person_">
+            <column name="PERSON_UID" value="admin"/>
+            <column name="PASSWORD" value="$2a$10$PnkWkQMBIhq3nIX2buTxIO9oCUAW.WUDGn97FRDZtidyukS07PTXO"/>
+            <column name="FIRST_NAME" value="Odin"/>
+            <column name="LAST_NAME" value="Æsir"/>
+            <column name="PLACE_OF_WORK" value="Anyway"/>
+            <column name="CITY" value="Asgard"/>
+        </insert>
+
+        <insert tableName="authorities">
+            <column name="PERSON_UID" value="admin"/>
+            <column name="AUTHORITY" value="ROLE_ADMIN"/>
+        </insert>
+
+        <insert tableName="person_">
+            <column name="PERSON_UID" value="user"/>
+            <column name="PASSWORD" value="$2a$10$PnkWkQMBIhq3nIX2buTxIO9oCUAW.WUDGn97FRDZtidyukS07PTXO"/>
+            <column name="FIRST_NAME" value="Антошка"/>
+            <column name="LAST_NAME" value="Рыжиков"/>
+            <column name="PLACE_OF_WORK" value="Anyway"/>
+            <column name="CITY" value="Простоквашино"/>
+        </insert>
+
+        <insert tableName="authorities">
+            <column name="PERSON_UID" value="user"/>
+            <column name="AUTHORITY" value="ROLE_USER"/>
+        </insert>
+    </changeSet>
 </databaseChangeLog>
