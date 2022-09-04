@@ -7,11 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Регистрация</title>
     <link href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/webjars/org.webjars/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
+    <link href="/static/signup.css" rel="stylesheet" type="text/css">
 </head>
-<body>
+<body class="text-center">
+
+ <main class="form-signin w-100 m-auto">
+  <form>
 
 <div class="container">
-<h1>Регистрация нового пользователя</h1>
+<div class="block">
+
+<h1 class="h3 mb-3 fw-normal">Регистрация</h1>
 
 <form id="submit-form" action="/signup" method="post">
     <div class="row mb-3">
@@ -21,23 +28,41 @@
         </div>
     </div>
     <p>
-        Имя
-        <input name="firstName"/>
+     <div class="row mb-3">
+        <label class=" col-sm-2 col-form-label">Имя</label>
+        <div class="col-sm-10">
+             <input name="firstName"class="form-control"/>
+        </div>
+     </div>
     </p>
     <p>
-        Отчество
-        <input name="middleName"/>
+    <div class="row mb-3">
+        <label class=" col-sm-2 col-form-label">Отчество</label>
+        <div class="col-sm-10">
+           <input name="middleName"class="form-control"/>
+        </div>
+    </div>
     </p>
     <div class="row mb-3">
-        <label class="col-sm-2 col-form-label">Дата рождения</label>
+        <label class=" col-sm-2 col-form-label">Дата рождения</label>
         <div class="col-sm-10">
             <input name="birthday" type="date" class="form-control">
         </div>
     </div>
-    <button type="submit">Готово</button>
-    <button type="reset">Очистить</button>
-    <button id="submit-button" type="button">Просто кнопка</button>
+    <div class="row mb-3">
+            <label class=" col-sm-2 col-form-label">Пароль</label>
+            <div class="col-sm-10">
+                <input name="birthday" type="password" class="form-control">
+            </div>
+    </div>
+
+    <button class="btn btn-outline-primary" type="submit">Готово</button>
+    <button class="w-30 btn btn-lg btn-primary" type="reset">Очистить</button>
+    <button class="w-30 btn btn-lg btn-primary" href="/login" id="submit-button" type="button">Войти</button>
+
+ </main>
 </form>
+</div>
 </div>
 
 <script src="/webjars/bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>
@@ -66,6 +91,7 @@
 
         })
     });
+
 </script>
 </body>
 </html>
