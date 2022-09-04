@@ -117,4 +117,7 @@ public class Message {
     public void setData(byte[] data) {
         this.data = data;
     }
+
+    public void setMessageId(String messageId) {
+    }
 }

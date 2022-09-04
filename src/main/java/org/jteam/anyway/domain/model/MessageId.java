@@ -19,4 +19,8 @@ public class MessageId {
         return new MessageId(UUID.randomUUID().toString());
     }
 
+
+    public String getMessageId() {
+        return value;
+    }
 }

@@ -7,13 +7,16 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.sql.Types;
+import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class MessageRepositoryJbdc implements MessageRepository {
     private static final Logger log = LoggerFactory.getLogger(MessageRepositoryJbdc.class);
 
@@ -24,9 +27,14 @@ public class MessageRepositoryJbdc implements MessageRepository {
     }
 
     @Override
+    public List<Message> find(String text) {
+        return null;
+    }
+
+    @Override
     public Optional<Message> find(MessageId messageId) {
         try {
-            String sql = "SELECT * FROM message_ as m left join message_data_ as md on m.MESSAGE_UID=md.MESSAGE_UID WHERE MESSAGE_UID=:id";
+            String sql = "SELECT * FROM message_ as m left join message_data_ as md on m.MESSAGE_UID=md.MESSAGE_UID WHERE m.MESSAGE_UID=:id";
             SqlParameterSource parameters = new MapSqlParameterSource()
                     .addValue("id", messageId.getValue(), Types.VARCHAR);
             return jdbcTemplate.queryForObject(sql, parameters, new RowMapper<Optional<Message>>() {

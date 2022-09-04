@@ -23,6 +23,7 @@
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="/login" class="nav-link active" aria-current="page">Войти</a></li>
         <li class="nav-item"><a href="/signup" class="nav-link" >Зарегистрироваться</a></li>
+        <li class="nav-item"><a href="/message">Сообщения</a>
         <li class="nav-item"><a href="/" class="nav-link mybutton ">О нас</a></li>
       </ul>
     </header>

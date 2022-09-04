@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api")
 public class CommunityController {
 
     private final CommunityRepository communityRepository;
@@ -18,7 +19,7 @@ public class CommunityController {
         this.communityRepository = communityRepository;
     }
 
-    @GetMapping("/community")
+    @GetMapping("community")
     public List<CommunityReference> search(@RequestParam String title) {
         final List<CommunityReference> result = new ArrayList<>();
         final List<Community> communityList = communityRepository.find(title);
@@ -34,7 +35,7 @@ public class CommunityController {
         return result;
     }
 
-    @GetMapping("/community/{id}")
+    @GetMapping("community/{id}")
     public CommunityData getById(@PathVariable String id) {
         final Optional<Community> communityOptional = communityRepository.find(new CommunityId(id));
         if (communityOptional.isPresent()) {
@@ -53,7 +54,7 @@ public class CommunityController {
 
     }
 
-    @PutMapping("/community/{id}")
+    @PutMapping("community/{id}")
     public CommunityData update(@PathVariable String id, @RequestBody CommunityData data) {
         Optional<Community> optional = communityRepository.find(new CommunityId(id));
         if (optional.isPresent()) {
@@ -76,7 +77,7 @@ public class CommunityController {
         }
     }
 
-    @DeleteMapping("/community/{id}")
+    @DeleteMapping("community/{id}")
     public void delete(@PathVariable String id) {
         int numberOfDeleted = communityRepository.delete(new CommunityId(id));
         if (numberOfDeleted < 1) {
