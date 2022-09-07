@@ -17,7 +17,6 @@
 
 <div class="container">
 <div class="block">
-
 <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
 
 <form id="submit-form" action="/signup" method="post">

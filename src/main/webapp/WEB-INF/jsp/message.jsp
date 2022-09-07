@@ -7,6 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Сообщения</title>
 <link href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/message.css" rel= "stylesheet">
+<link href="/webjars/org.webjars/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div style="border:1px solid red">

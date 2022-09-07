@@ -5,10 +5,9 @@
 <head>
     <title>Login</title>
     <tags:head/>
-
+   <link href="/static/login.css" rel= "stylesheet">
 </head>
 <body>
-
 <div class="container-fluid min-vh-100 d-flex flex-column">
     <div class="row flex-grow-1"></div>
     <div class="row align-items-center">
@@ -47,30 +46,6 @@
     </div>
     <div class="row flex-grow-1"></div>
 </div>
-<style type="text/css">
-        tr{
-            height: 50px;
-        }
-        td{
-            text-align: center;
-        }
-        *{
-          box-sizing: border-box;
-        }
-        body {
-         font-family: 'Poppins', sans-serif;
-         margin: 0;
-
-         min-height: 100vh;
-         justify-content: center;
-         display: flex;
-         align-items: center;
-
-         background-color: #F5F5DC;
-        }
-    </style>
-
-
 <tags:scripts/>
 </body>
 </html>

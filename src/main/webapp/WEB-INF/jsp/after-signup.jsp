@@ -8,12 +8,10 @@
     <title>Регистрация</title>
     <link href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="/webjars/org.webjars/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
+    <link href="/static/after-signup.css" rel= "stylesheet">
 </head>
 <body>
-
-
 <h1>После регистрации пользователя</h1>
-
 <script src="/webjars/bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>(Мессенджер)-Название сайта</title>
     <link href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/static/style.css" rel= "stylesheet">
+    <link href="/static/index.css" rel= "stylesheet">
     <link href="/webjars/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
 </head>
 <body class="d-flex h-100 text-center text-bg-gray">
@@ -22,24 +22,12 @@
       </a>
       <ul class="nav nav-pills">
         <li class="nav-item"><a href="/login" class="nav-link active" aria-current="page">Войти</a></li>
-        <li class="nav-item"><a href="/signup" class="nav-link" >Зарегистрироваться</a></li>
-        <li class="nav-item"><a href="/message">Сообщения</a>
-        <li class="nav-item"><a href="/" class="nav-link mybutton ">О нас</a></li>
+        <li class="nav-item"><a href="/signup" class="nav-link">Зарегистрироваться</a></li>
+        <li class="nav-item"><a href="/message" class="nav-link">Сообщения</a>
+        <li class="nav-item"><a href="/" class="nav-link mybutton">О нас</a></li>
       </ul>
     </header>
   </div>
   </div>
 </body>
-<style type="text/css">
-        *{
-          box-sizing: border-box;
-        }
-        body {
-         font-family: 'Poppins', sans-serif;
-         margin: 0;
-         min-height: 100vh;
-         display: flex;
-         background-color: #F5F5DC;
-        }
-    </style>
 </html>

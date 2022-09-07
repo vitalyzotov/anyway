@@ -6,11 +6,9 @@
    <tags:head/>
 </head>
 <body>
-
 <div class="container">
    Error
 </div>
-
 <tags:scripts/>
 </body>
 </html>
