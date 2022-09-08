@@ -3,12 +3,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Регистрация</title>
-    <link href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/webjars/org.webjars/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
     <link href="/static/signup.css" rel="stylesheet" type="text/css">
+    <tags:head/>
 </head>
 <body class="text-center">
 

@@ -3,13 +3,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>(Мессенджер)-Название сайта</title>
-    <link href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/index.css" rel= "stylesheet">
-    <link href="/webjars/font-awesome/6.1.2/css/all.min.css" rel="stylesheet">
+    <tags:head/>
 </head>
 <body class="d-flex h-100 text-center text-bg-gray">
 <script src="/webjars/bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>

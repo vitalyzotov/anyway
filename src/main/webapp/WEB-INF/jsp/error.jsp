@@ -3,6 +3,7 @@
 <html>
 <head>
    <title>Error</title>
+   <link href="/static/error.css" rel= "stylesheet">
    <tags:head/>
 </head>
 <body>
