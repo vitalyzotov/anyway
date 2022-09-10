@@ -25,4 +25,9 @@ public class PersonId {
         // [0; 9 999 999]
         return new PersonId(String.valueOf(random.nextInt(0, 10000000)));
     }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

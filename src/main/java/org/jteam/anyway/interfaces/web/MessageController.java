@@ -20,15 +20,16 @@ public class MessageController {
     }
 
     @GetMapping("message")
-    public List<MessageReference> search(@RequestParam String text) {
+    public List<MessageReference> search(@RequestParam(required = false) String text) {
         final List<MessageReference> result = new ArrayList<>();
+
         final List<Message> message = messageRepository.find(text);
+
         for(Message p: message) {
             MessageReference ref = new MessageReference();
             ref.setText(p.getText());
             ref.setAuthorId(p.getAuthorId());
-            ref.setMessageid(p.getMessageId());
-
+            ref.setMessageid(p.getMessageId().getValue());
             result.add(ref);
         }
 
