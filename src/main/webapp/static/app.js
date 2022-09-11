@@ -10,10 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
             let messageTemplate = (message) => html`
                 <div style="border:1px solid red" data-message-id="${message.messageid}">
                     <div style="border:1px solid green; float:left">
-                        ${message.authorid}
+                        ${message.authorId}
+                    </div>
+                    <div class="form-floating mb-4; float:left">
+                        написал
+                        ${message.recipientId}
                     </div>
                     <div style="border:1px solid black; float:right">
-                        18:36 18.07.2022 выведи меня из модели
+                        ${message.createdFormatted}
                     </div>
                     <div style="clear:both">
                         ${message.text}
@@ -21,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>`;
             messages.innerHTML = '';
             for (const m of data) {
+                m.createdFormatted = formatDate(m.created);
                 messages.innerHTML += render(m, messageTemplate);
             }
         })

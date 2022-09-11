@@ -1,3 +1,8 @@
+function formatDate(dateString) {
+    let date = new Date(dateString);
+    return date.toLocaleDateString() + ' ' + date.toLocaleTimeString();
+}
+
 function html(literals, ...vars) {
     let raw = literals.raw,
         result = '',

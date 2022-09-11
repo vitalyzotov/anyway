@@ -28,8 +28,10 @@ public class MessageController {
         for(Message p: message) {
             MessageReference ref = new MessageReference();
             ref.setText(p.getText());
-            ref.setAuthorId(p.getAuthorId());
+            ref.setAuthorId(p.getAuthorId().getValue());
             ref.setMessageid(p.getMessageId().getValue());
+            ref.setCreated(p.getCreated());
+            ref.setRecipientId(p.getRecipientId().getValue());
             result.add(ref);
         }
 
