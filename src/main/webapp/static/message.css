@@ -1,3 +1,7 @@
-*{
 
+.menu-item{
+    border: 2px solid #66CDAA;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
 }

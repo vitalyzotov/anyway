@@ -5,10 +5,21 @@
 <html lang="en">
 <head>
     <title>Сообщения</title>
-    <link href="/static/message.css" rel="stylesheet">
+    <title>Домой</title>
+    <link rel ="stylesheet" href="/static/message.css"
     <tags:head/>
 </head>
 <body>
+<div id="nav">
+<div class="menu-item">
+Меню 1
+    <div class="submenu">
+        Подменю
+            </div></div>
+<ul class="nav nav-pills">
+<li class="nav-item"><a href="/" class="nav-link">Домой</a>
+</ul>
+</div>
 
 <div id="anyway-messages">
 

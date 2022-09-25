@@ -1,7 +1,6 @@
 package org.jteam.anyway.interfaces.web;
 
-import org.jteam.anyway.domain.model.MessageId;
-import org.jteam.anyway.domain.model.PersonId;
+import java.time.Instant;
 
 public class MessageReference {
     
@@ -9,16 +8,30 @@ public class MessageReference {
     
     private String text;
     
-    private String authorid;
+    private String authorId;
 
-    public MessageReference(String messageid, String text, String authorid) {
+    private Instant created;
+
+    private String recipientId;
+
+    public MessageReference(String messageid, String text, String authorId, Instant created, String recipientId) {
         this.messageid = messageid;
         this.text = text;
-        this.authorid = authorid;
+        this.authorId = authorId;
+        this.created = created;
+        this.recipientId = recipientId;
     }
 
     public MessageReference() {
         
+    }
+
+    public String getRecipientId() {
+        return recipientId;
+    }
+
+    public void setRecipientId(String recipientId) {
+        this.recipientId = recipientId;
     }
 
     public String getMessageid() {
@@ -37,18 +50,19 @@ public class MessageReference {
         this.text = text;
     }
 
-    public String getAuthorid() {
-        return authorid;
+    public String getAuthorId() {
+        return authorId;
     }
 
-    public void setAuthorid(String authorid) {
-        this.authorid = authorid;
+    public void setAuthorId(String authorId) {
+        this.authorId = authorId;
     }
 
-    public void setAuthorId(PersonId authorId) {
+    public Instant getCreated() {
+        return created;
     }
 
-    public void setMessageid(MessageId messageId) {
-
+    public void setCreated(Instant created) {
+        this.created = created;
     }
 }
