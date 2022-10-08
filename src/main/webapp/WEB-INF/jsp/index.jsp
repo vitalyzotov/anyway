@@ -1,4 +1,4 @@
-<%@ page contentT=ype="text/html;charsetUTF-8" language="java" %>
+<%@ page contentType="text/html;charsetUTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="tags" tagdir="/WEB-INF/tags" %>
 <!doctype html>
