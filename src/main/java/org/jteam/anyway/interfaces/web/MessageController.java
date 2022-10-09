@@ -1,6 +1,8 @@
 package org.jteam.anyway.interfaces.web;
 
 import org.jteam.anyway.domain.model.*;
+import org.jteam.anyway.interfaces.web.data.MessageData;
+import org.jteam.anyway.interfaces.web.data.MessageReference;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -11,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 public class MessageController {
 
     private final MessageRepository messageRepository;

@@ -1,13 +1,13 @@
-package org.jteam.anyway.interfaces.web;
+package org.jteam.anyway.interfaces.web.data;
 
 import java.time.Instant;
 
 public class MessageReference {
-    
+
     private String messageid;
-    
+
     private String text;
-    
+
     private String authorId;
 
     private Instant created;
@@ -23,7 +23,7 @@ public class MessageReference {
     }
 
     public MessageReference() {
-        
+
     }
 
     public String getRecipientId() {

@@ -38,6 +38,7 @@ class PersonRepositoryJdbcTest {
     void store() {
         personRepository.store(new Person(
                 PersonId.nextId(),
+                "password hash",
                 "John",
                 "Snow",
                 LocalDate.of(1813, Month.MARCH, 15),

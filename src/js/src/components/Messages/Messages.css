@@ -1,0 +1,21 @@
+.message {
+    border: 1px solid red;
+}
+
+.message-author {
+    border: 1px solid green;
+    float: left;
+}
+
+.message-recipient {
+    float: left
+}
+
+.message-created {
+    border: 1px solid black;
+    float: right
+}
+
+.message-text {
+    clear:both;
+}

@@ -63,12 +63,18 @@ public class Person {
      */
     private String education;
 
+    /**
+     * Хеш пароля
+     */
+    private String password;
+
     public Person(PersonId id) {
         Objects.requireNonNull(id, "Person ID is required");
         this.id = id;
     }
 
     public Person(PersonId id,
+                  String password,
                   String firstName,
                   String lastName,
                   LocalDate birthday,
@@ -81,8 +87,10 @@ public class Person {
                   byte[] photo
     ) {
         this(id);
+        Objects.requireNonNull(password, "Password hash required");
         Objects.requireNonNull(firstName, "First name is required");
         Objects.requireNonNull(lastName, "Last name is required");
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthday = birthday;
@@ -93,6 +101,14 @@ public class Person {
         this.languages = languages;
         this.mobilePhone = mobilePhone;
         this.education = education;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getHometown() {

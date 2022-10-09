@@ -44,7 +44,7 @@ class MessageRepositoryJdbcTest {
     void store() {
         PersonId person1 = PersonId.nextId();
         personRepository.store(new Person(
-                person1,
+                person1, "password hash",
                 "John", "Snow", LocalDate.now(), "Saratov", "Saratov", "", "", "", List.of(), null
         ));
         messageRepository.store(new Message(

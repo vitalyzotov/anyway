@@ -3,6 +3,7 @@ package org.jteam.anyway.interfaces.web;
 import org.jteam.anyway.domain.model.Person;
 import org.jteam.anyway.domain.model.PersonId;
 import org.jteam.anyway.domain.model.PersonRepository;
+import org.jteam.anyway.interfaces.web.data.PersonData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,6 +30,7 @@ public class SignupRestController {
 
         Person person = new Person(
                 PersonId.nextNumericId(),
+                "password hash",
                 data.getFirstName(),
                 data.getLastName(),
                 LocalDate.now(),

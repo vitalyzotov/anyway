@@ -26,9 +26,10 @@ public class PersonRepositoryJdbc implements PersonRepository {
             SELECT * FROM person_ WHERE PERSON_UID=:id""";
 
     public static final String INSERT_OR_UPDATE = """
-            INSERT INTO person_ (PERSON_UID, FIRST_NAME, LAST_NAME, BIRTH_DATE, CITY, COUNTRY, PLACE_OF_WORK, PHONE_MOBILE, EDUCATION, LANGUAGES) 
-            VALUES (:id, :firstName, :lastName, :birthDate, :city, :country, :placeOfWork, :mobilePhone, :education, :languages)
+            INSERT INTO person_ (PERSON_UID, PASSWORD, FIRST_NAME, LAST_NAME, BIRTH_DATE, CITY, COUNTRY, PLACE_OF_WORK, PHONE_MOBILE, EDUCATION, LANGUAGES) 
+            VALUES (:id, :password, :firstName, :lastName, :birthDate, :city, :country, :placeOfWork, :mobilePhone, :education, :languages)
             ON DUPLICATE KEY UPDATE
+                PASSWORD=:password,
                 FIRST_NAME=:firstName,
                 LAST_NAME=:lastName,
                 BIRTH_DATE=:birthDate,
@@ -46,6 +47,7 @@ public class PersonRepositoryJdbc implements PersonRepository {
         Date birthDate = rs.getDate("BIRTH_DATE");
         return new Person(
                 new PersonId(rs.getString("PERSON_UID")),
+                rs.getString("PASSWORD"),
                 rs.getString("FIRST_NAME"),
                 rs.getString("LAST_NAME"),
                 birthDate == null ? null : birthDate.toLocalDate(),
@@ -104,6 +106,7 @@ public class PersonRepositoryJdbc implements PersonRepository {
                 INSERT_OR_UPDATE,
                 new MapSqlParameterSource()
                         .addValue("id", person.getId().getValue(), Types.VARCHAR)
+                        .addValue("password", person.getPassword(), Types.VARCHAR)
                         .addValue("firstName", person.getFirstName(), Types.VARCHAR)
                         .addValue("lastName", person.getLastName(), Types.VARCHAR)
                         .addValue("birthDate", person.getBirthday(), Types.DATE)

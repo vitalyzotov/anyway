@@ -1,4 +1,4 @@
-package org.jteam.anyway.interfaces.web;
+package org.jteam.anyway.interfaces.web.data;
 
 import org.jteam.anyway.domain.model.PersonId;
 
