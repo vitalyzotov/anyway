@@ -11,6 +11,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.sql.Date;
 import java.sql.Types;
 import java.util.List;
 import java.util.Optional;
@@ -41,28 +42,30 @@ public class PersonRepositoryJdbc implements PersonRepository {
 
     private final NamedParameterJdbcTemplate jdbcTemplate;
 
-    private RowMapper<Person> personRowMapper = (rs, rowNum) ->
-            new Person(
-                    new PersonId(rs.getString("PERSON_UID")),
-                    rs.getString("FIRST_NAME"),
-                    rs.getString("LAST_NAME"),
-                    rs.getDate("BIRTH_DATE").toLocalDate(),
-                    rs.getString("COUNTRY"),
-                    rs.getString("CITY"),
-                    rs.getString("PHONE_MOBILE"),
-                    rs.getString("EDUCATION"),
-                    rs.getString("PLACE_OF_WORK"),
-                    Optional.ofNullable(rs.getString("LANGUAGES"))
-                            .stream()
-                            .<String>mapMulti(
-                                    (languages, accept) -> Stream.of(languages.split(","))
-                                            .map(String::trim)
-                                            .forEachOrdered(accept)
-                            )
-                            .toList(),
-                    null
+    private RowMapper<Person> personRowMapper = (rs, rowNum) -> {
+        Date birthDate = rs.getDate("BIRTH_DATE");
+        return new Person(
+                new PersonId(rs.getString("PERSON_UID")),
+                rs.getString("FIRST_NAME"),
+                rs.getString("LAST_NAME"),
+                birthDate == null ? null : birthDate.toLocalDate(),
+                rs.getString("COUNTRY"),
+                rs.getString("CITY"),
+                rs.getString("PHONE_MOBILE"),
+                rs.getString("EDUCATION"),
+                rs.getString("PLACE_OF_WORK"),
+                Optional.ofNullable(rs.getString("LANGUAGES"))
+                        .stream()
+                        .<String>mapMulti(
+                                (languages, accept) -> Stream.of(languages.split(","))
+                                        .map(String::trim)
+                                        .forEachOrdered(accept)
+                        )
+                        .toList(),
+                null
 
-            );
+        );
+    };
 
     public PersonRepositoryJdbc(NamedParameterJdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -70,9 +73,15 @@ public class PersonRepositoryJdbc implements PersonRepository {
 
     @Override
     public List<Person> find(String name) {
+        if (name == null) {
+            return jdbcTemplate.query("SELECT * FROM person_", personRowMapper);
+
+        }
         return jdbcTemplate.query("SELECT * FROM person_ WHERE FIRST_NAME like :name OR LAST_NAME like :name",
-                new MapSqlParameterSource().addValue("name", "%"+name+"%"), personRowMapper);
+                new MapSqlParameterSource().addValue("name", "%" + name + "%"), personRowMapper);
+
     }
+
 
     @Override
     public Optional<Person> find(PersonId personId) {

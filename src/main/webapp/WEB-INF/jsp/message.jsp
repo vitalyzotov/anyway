@@ -9,7 +9,7 @@
     <link rel ="stylesheet" href="/static/message.css"
     <tags:head/>
 </head>
-<body>
+<body data-page="messages">
 <div id="nav">
 <div class="menu-item">
 Меню 1
@@ -19,6 +19,10 @@
 <ul class="nav nav-pills">
 <li class="nav-item"><a href="/" class="nav-link">Домой</a>
 </ul>
+</div>
+
+<div id="anyway-listperson">
+
 </div>
 
 <div id="anyway-messages">

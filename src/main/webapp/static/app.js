@@ -1,6 +1,74 @@
 document.addEventListener("DOMContentLoaded", function () {
     console.log("I am loaded");
 
+    let body = document.body;
+    let pageId = body.dataset.page;
+    console.log(pageId);
+
+    if(pageId === 'messages') {
+        showMessages();
+    } else if (pageId==='users') {
+        showUsers();
+    }
+});
+
+function showUsers() {
+    console.log('fetch and show users');
+
+    fetch("/api/person")
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            let person = document.getElementById("anyway-listperson");
+            let listpersonTemplate = (person) => html`
+                <div style="border:1px solid red" data-person-id="${person.Id}">
+                    <div style="border:1px solid green; float:left">
+                        ${person.firstName}
+                    </div>
+                    <div class="form-floating mb-4; float:left">
+                        ${person.lastName}
+                    </div>
+                </div>`;
+            person.innerHTML = '';
+            for (const m of data) {
+                m.createdFormatted = formatDate(m.created);
+                person.innerHTML += render(m, listpersonTemplate);
+            }
+        })
+        .catch(function () {
+            console.log("Не получилось загрузить людей!!!");
+        });
+}
+
+function showMessages() {
+     fetch("/api/person")
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                let person = document.getElementById("anyway-listperson");
+                let listpersonTemplate = (person) => html`
+                    <div style="border:1px solid red" data-person-id="${person.Id}">
+                        <div style="border:1px solid green; float:left">
+                            ${person.firstName}
+                        </div>
+                        <div class="form-floating mb-4; float:left">
+                            ${person.lastName}
+                        </div>
+                    </div>`;
+                person.innerHTML = '';
+                for (const m of data) {
+                    m.createdFormatted = formatDate(m.created);
+                    person.innerHTML += render(m, listpersonTemplate);
+                }
+            })
+            .catch(function () {
+                console.log("Не получилось загрузить людей!!!");
+            });
+    }
+
+
     fetch("/api/message")
         .then(function (response) {
             return response.json();
@@ -32,5 +100,3 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(function () {
             console.log("Не получилось загрузить сообщения!!!");
         });
-});
-

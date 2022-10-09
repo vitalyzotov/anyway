@@ -2,15 +2,15 @@ package org.jteam.anyway.interfaces.web;
 
 public class PersonReference {
     private String id;
-    private String fistName;
+    private String firstName;
     private String lastName;
 
     public PersonReference() {
     }
 
-    public PersonReference(String id, String fistName, String lastName) {
+    public PersonReference(String id, String firstName, String lastName) {
         this.id = id;
-        this.fistName = fistName;
+        this.firstName = firstName;
         this.lastName = lastName;
     }
 
@@ -22,12 +22,12 @@ public class PersonReference {
         this.id = id;
     }
 
-    public String getFistName() {
-        return fistName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFistName(String fistName) {
-        this.fistName = fistName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastName() {

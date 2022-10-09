@@ -1,16 +1,8 @@
 package org.jteam.anyway.interfaces.web;
 
-import org.jteam.anyway.domain.model.Person;
-import org.jteam.anyway.domain.model.PersonId;
-import org.jteam.anyway.domain.model.PersonRepository;
+import org.jteam.anyway.domain.model.*;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
@@ -18,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping("/api")
 public class PersonController {
 
     private final PersonRepository personRepository;
@@ -27,14 +20,14 @@ public class PersonController {
     }
 
     // person?name=ася
-    @GetMapping("/person")
-    public List<PersonReference> search(@RequestParam String name) {
+    @GetMapping("person")
+    public List<PersonReference> search(@RequestParam(required = false) String name) {
         final List<PersonReference> result = new ArrayList<>();
         final List<Person> people = personRepository.find(name);
         for(Person p: people) {
             PersonReference ref = new PersonReference();
             ref.setId(p.getId().getValue());
-            ref.setFistName(p.getFirstName());
+            ref.setFirstName(p.getFirstName());
             ref.setLastName(p.getLastName());
 
             result.add(ref);
@@ -43,7 +36,7 @@ public class PersonController {
         return result;
     }
 
-    @GetMapping("/person/{id}")
+    @GetMapping("person/{id}")
     public PersonData getById(@PathVariable String id) {
         final Optional<Person> personOptional = personRepository.find(new PersonId(id));
         if (personOptional.isPresent()) {
@@ -61,7 +54,7 @@ public class PersonController {
         }
     }
 
-    @PutMapping("/person/{id}")
+    @PutMapping("person/{id}")
     public PersonData update(@PathVariable String id, @RequestBody PersonData data) {
         Optional<Person> optional = personRepository.find(new PersonId(id));
         if(optional.isPresent()) {
@@ -84,7 +77,7 @@ public class PersonController {
         }
     }
 
-    @DeleteMapping("/person/{id}")
+    @DeleteMapping("person/{id}")
     public void delete(@PathVariable String id) {
         int numberOfDeleted = personRepository.delete(new PersonId(id));
         if(numberOfDeleted < 1) {

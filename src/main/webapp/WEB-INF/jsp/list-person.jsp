@@ -8,14 +8,15 @@
     <link rel ="stylesheet" href="/static/message.css"
     <tags:head/>
 </head>
-<body class="d-flex h-100 text-center text-bg-gray">
+<body class="d-flex h-100 text-center text-bg-gray" data-page="users">
 <p>Друзья</p>
 
 </div>
 
-<div id="anyway-messages">
+<div id="anyway-listperson">
 
 </div>
+<tags:scripts/>
 <script src="/webjars/bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>
 <script src="/static/app.js"></script>
 </body>
