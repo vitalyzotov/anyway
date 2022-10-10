@@ -11,7 +11,8 @@ async function loginUser(credentials) {
     })
         .then(data => data.json())
 }
-export function Login({ setToken }) {
+
+export function Login({setToken}) {
     const [username, setUserName] = useState();
     const [password, setPassword] = useState();
 
@@ -25,21 +26,27 @@ export function Login({ setToken }) {
     };
 
     return (
-        <div className="login-wrapper">
-            <h1>Anyway</h1>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    <p>Пользователь</p>
-                    <input type="text" onChange={e => setUserName(e.target.value)} />
-                </label>
-                <label>
-                    <p>Пароль</p>
-                    <input type="password" onChange={e => setPassword(e.target.value)} />
-                </label>
-                <div>
-                    <button type="submit">Войти</button>
+        <div className="container">
+            <div className="row justify-content-center">
+                <div className="col-4">
+                    <h1 className="text-center">Anyway</h1>
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-group mb-3">
+                            <label htmlFor="loginFormUsername">Пользователь</label>
+                            <input className="form-control" id="loginFormUsername" type="text"
+                                   onChange={e => setUserName(e.target.value)}/>
+                        </div>
+                        <div className="form-group mb-3">
+                            <label htmlFor="loginFormPassword">Пароль</label>
+                            <input className="form-control" id="loginFormPassword" type="password"
+                                   onChange={e => setPassword(e.target.value)}/>
+                        </div>
+                        <div className="text-center">
+                            <button type="submit" className="btn btn-primary">Войти</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     );
 }
