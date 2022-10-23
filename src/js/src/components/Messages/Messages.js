@@ -19,6 +19,7 @@ export function Messages() {
     return (
         <div>
             <h1>Messages Page!</h1>
+            <div class="window">
             <div>
                 {messages.map(message => <div className="message" data-message-id={message.messageid}>
                     <div className="message-author">
@@ -36,6 +37,7 @@ export function Messages() {
                     </div>
                 </div>)}
             </div>
+        </div>
         </div>
     );
 }
